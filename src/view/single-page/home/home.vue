@@ -22,7 +22,8 @@
     </Row>
     <Row>
       <Card shadow>
-        <example style="height: 310px;"/>
+<!--        <example style="height: 310px;"/>-->
+        <weekstat></weekstat>
       </Card>
     </Row>
   </div>
@@ -32,15 +33,17 @@
 import InforCard from '_c/info-card'
 import CountTo from '_c/count-to'
 import { ChartPie, ChartBar } from '_c/charts'
-import Example from './example.vue'
+import Weekstat from '@/view/single-page/home/weekstat'
+// import Example from './example.vue'
 export default {
   name: 'home',
   components: {
+    Weekstat,
     InforCard,
     CountTo,
     ChartPie,
     ChartBar,
-    Example
+    // Example
   },
   data () {
     return {
