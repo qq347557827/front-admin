@@ -22,7 +22,8 @@
     </Row>
     <Row>
       <Card shadow>
-        <example style="height: 310px;"/>
+        <!-- <example style="height: 310px;"/> -->
+        <weekstat></weekstat>
       </Card>
     </Row>
   </div>
@@ -32,7 +33,8 @@
 import InforCard from '_c/info-card'
 import CountTo from '_c/count-to'
 import { ChartPie, ChartBar } from '_c/charts'
-import Example from './example.vue'
+// import Example from './example.vue'
+import Weekstat from './weekstat.vue'
 export default {
   name: 'home',
   components: {
@@ -40,7 +42,8 @@ export default {
     CountTo,
     ChartPie,
     ChartBar,
-    Example
+    // Example,
+    Weekstat
   },
   data () {
     return {
@@ -56,7 +59,7 @@ export default {
         { value: 335, name: '提问' },
         { value: 310, name: '分享' },
         { value: 234, name: '建议' },
-        { value: 135, name: '讨论' },
+        { value: 135, name: '讨论' }
       ],
       barData: {
         Mon: 13253,
