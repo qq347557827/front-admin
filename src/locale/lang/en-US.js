@@ -55,4 +55,6 @@ export default {
   'menu Options': 'menu Options',
   resources: 'resources',
   user2_management: 'user management',
+  logs_management: 'logs management',
+  logs_content: 'logs content'
 }
