@@ -75,6 +75,19 @@ export function getRolesTitle () {
   return axios.get('admin/get_roles_title')
 }
 
+export const getWeekData = () => {
+  return axios.get('admin/get_week_data')
+}
+
+export const getErrorList = (params) => {
+  // return axios.get('admin/getError')
+  return axios.get('/admin/getError?' + qs.stringify(params))
+}
+
+export const deleteError = (data) => {
+  return axios.post('admin/deleteError', data)
+}
+
 // export const getRouterReq = (access) => {
 //   return axios.request({
 //     url: 'get_router',

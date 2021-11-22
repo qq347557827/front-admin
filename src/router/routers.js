@@ -79,6 +79,26 @@ export default [
       }
     ]
   },
+  {
+    path: '/logs',
+    name: 'logs_management',
+    meta: {
+      icon: 'ios-bug',
+      title: '日志管理'
+    },
+    component: Main,
+    children: [
+      {
+        path: '/logs/content',
+        name: 'logs_content',
+        meta: {
+          icon: 'ios-bug',
+          title: '错误日志'
+        },
+        component: () => import('@/view/logs/index')
+      }
+    ]
+  },
   // {
   //   path: '/user2',
   //   name: 'user2',
