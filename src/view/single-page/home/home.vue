@@ -22,36 +22,32 @@
       </i-col>
     </Row>
     <Row>
-      <Card shadow>
-        <!-- <example style="height: 310px;"/> -->
-        <weekstat></weekstat>
+      <Card shadow style="width: 100%;">
+        <weekstat :key="weekKey" style="width: 100%; height: 500px;" :week-data="weekData"></weekstat>
       </Card>
     </Row>
   </div>
 </template>
 
 <script>
+import { getWeekData } from '@/api/request'
 import InforCard from '_c/info-card'
 import CountTo from '_c/count-to'
 import { ChartPie, ChartBar } from '_c/charts'
-
-// import Example from './example.vue'
-import Weekstat from './weekstat.vue'
-
+import Weekstat from '@/view/single-page/home/weekstat'
 export default {
   name: 'home',
   components: {
-    Weekstat,
     InforCard,
     CountTo,
     ChartPie,
     ChartBar,
-
-    // Example,
     Weekstat
   },
   data () {
     return {
+      weekData: {},
+      weekKey: 0,
       inforCardData: [
         {
           title: '新增用户',
@@ -119,8 +115,11 @@ export default {
       }
     }
   },
-  mounted () {
-    //
+  created () {
+    getWeekData().then(res => {
+      this.weekData = res.data.data
+      this.weekKey += 1
+    })
   }
 }
 </script>

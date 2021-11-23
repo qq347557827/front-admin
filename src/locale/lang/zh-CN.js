@@ -53,5 +53,7 @@ export default {
   roles_management: '角色权限',
   'menu Options': '菜单选项',
   resources: '资源选项',
-  user2_management: '用户管理2'
+  user2_management: '用户管理2',
+  logs_management: '日志管理',
+  logs_content: '错误日志'
 }

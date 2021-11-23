@@ -112,7 +112,8 @@ export default {
       ]
     }
     this.$nextTick(() => {
-      this.dom = echarts.init(this.$refs.dom)
+      const dom = this.$refs.dom
+      this.dom = echarts.init(dom)
       this.dom.setOption(option)
       on(window, 'resize', this.resize)
     })
