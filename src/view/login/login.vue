@@ -8,7 +8,7 @@
       <Card icon="log-in" title="欢迎登录" :bordered="false">
         <div class="form-con">
           <login-form @on-success-valid="handleSubmit"></login-form>
-          <p class="login-tip">输入任意用户名和密码即可</p>
+<!--          <p class="login-tip">输入任意用户名和密码即可</p>-->
         </div>
       </Card>
     </div>
@@ -28,18 +28,30 @@ export default {
       'getUserInfo'
     ]),
     handleSubmit ({ userName, password, code, sid }) {
+      const spin = this.$Spin
+      spin.show();
       this.handleLogin({ userName, password, code, sid }).then(res => {
-        console.log('handleSubmitres: ', res)
-        if (res) {
+        spin.hide();
+        if (res.data.code === 200) {
+          this.$Message.info({
+            background: true,
+            content: `登录成功`
+          })
           this.$router.push({
             name: this.$config.homeName
           })
+        } else {
+          this.$Message.error({
+            background: true,
+            content: `${res.data.code},${res.data.msg}`
+          })
         }
-        // this.getUserInfo().then(res => {
-        //   this.$router.push({
-        //     name: this.$config.homeName
-        //   })
-        // })
+      }).catch(err => {
+        spin.hide();
+        this.$Message.error({
+          background: true,
+          content: '连接服务器失败,请重试'
+        })
       })
     }
   }

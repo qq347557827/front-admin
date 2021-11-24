@@ -10,6 +10,7 @@ import {
   // getUnreadCount
 } from '@/api/user'
 import app from './app'
+
 import { setToken, getToken, getRouteComs, getMenuByRouter, setTagNavListInLocalstorage } from '@/libs/util'
 import router from '@/router'
 import community from '@/router/community'
@@ -53,7 +54,7 @@ export default {
     setRoutes (state, status) {
       state.routes = getRouteComs(status)
       // state.routes = status
-      router.addRoutes(state.routes )
+      router.addRoutes(state.routes)
 
       // router.addRoutes(community)
       // router.replace(router.currentRoute.value.fullPath)
@@ -114,17 +115,18 @@ export default {
           code,
           sid
         }).then(res => {
-          const data = res.data
-          console.log('data: ', data)
-          commit('setToken', data.token)
-          commit('setAvatar', data.data.pic)
-          commit('setUserName', data.data.name)
-          commit('setUserId', data.data._id)
-          commit('setRoutes', data.routes)
-          commit('setAccess', data.data.roles)
-
-          commit('setHasGetInfo', true)
-          resolve(true)
+          if (res.data.code === 200) {
+            const data = res.data
+            console.log('data: ', data)
+            commit('setToken', data.token)
+            commit('setAvatar', data.data.pic)
+            commit('setUserName', data.data.name)
+            commit('setUserId', data.data._id)
+            commit('setRoutes', data.routes)
+            commit('setAccess', data.data.roles)
+            commit('setHasGetInfo', true)
+          }
+          resolve(res)
         }).catch(err => {
           reject(err)
         })
