@@ -27,7 +27,12 @@
       </Input>
     </FormItem>
     <div @click="getsvg">
-      <p v-html="svg"></p>
+      <template v-if="svg">
+        <p v-html="svg"></p>
+      </template>
+      <template v-else>
+        <div style="margin-bottom: 20px; cursor: pointer;">验证码获取失败点击重试</div>
+      </template>
     </div>
     <FormItem>
       <Button @click="handleSubmit" type="primary" long>登录</Button>
